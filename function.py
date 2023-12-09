@@ -1,12 +1,9 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.tokenize import sent_tokenize
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 import matplotlib.pyplot as plt
 import streamlit as st
 import networkx as nx
-import pandas as pd
 import nltk
 import re
 
@@ -87,20 +84,3 @@ def summarization(x, k = 4, index=1, threshold=0.11, show_score=False, detail_sc
                 print(f"Score Kalimat Index ke-{i} : {nilai}")
 
     return (' '.join(summary_sentences), G)
-
-
-# ================ Preprocessing Hasil Summary =============== 
-
-def cleaning_text(text):
-  text = re.sub(r'[^a-zA-Z\s]', '', text).strip()
-  return text
-
-def tokenizer_text(text):
-  text = text.lower()
-  return word_tokenize(text)
-
-
-corpus = stopwords.words('indonesian')
-
-def stopwordText(words):
- return [word for word in words if word not in corpus]
