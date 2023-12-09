@@ -31,7 +31,7 @@ if button:
     # Predict Model Tanpa Ringkasan
     vectorizer_nonSUM = joblib.load("resources/vectorizer_nonSummary.pkl")
     model_nonSum = joblib.load("resources/modelSVM_NonSummary.pkl")
-    new_text_matrics_nonSum = vectorizer_nonSUM.transform([summary]).toarray()
+    new_text_matrics_nonSum = vectorizer_nonSUM.transform([text]).toarray()
     prediction_nonSum = model_nonSum.predict(new_text_matrics_nonSum)
     st.session_state.svmNonSUM = prediction_nonSum[0]
     
