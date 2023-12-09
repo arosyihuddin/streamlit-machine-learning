@@ -54,33 +54,25 @@ if selected == "Summary":
   if st.session_state.summary:
     sentence = st.session_state.tokenSentence
     score_text_rank = st.session_state.score_text_rank
-    st.write("**Hasil Summarization:**")
-    st.write("_"+ st.session_state.summary + "_")
-    st.write("Nilai score Text Rank :")
+    st.write(":red[**Hasil Summarization:**]")
+    st.write(f":blue[*{st.session_state.summary}*]")
+    st.markdown("***")
+    
+    st.write(":red[**Nilai score Text Rank :**]")
     for i, cls in enumerate(score_text_rank):
-      st.write(f"index {i} score Text Rank : {score_text_rank[cls]} -> Kalimat : {sentence[i]}")
+      st.write(f":blue[*index {i} score Text Rank* :] :green[{score_text_rank[cls]}] -> Kalimat : {sentence[i]}")
   
   
 elif selected == "Klasifikasi":
   if st.session_state.summary:
-    #   st.caption("Klasifikasi Berdasarkan Hasil Summarization (Naive Bayes)")
       new_text = st.session_state.summary
       svm_nonSummary, svm_Summary = st.tabs(["Model SVM (Ringkasan)", "Model SVM (Tanpa Ringkasan)"])
       
       with svm_nonSummary:
-        #   if st.session_state.svmNonSUM:
-        # vectorizer = joblib.load("resources/vectorizer_nonSummary.pkl")
-        # model = joblib.load("resources/modelSVM_NonSummary.pkl")
-        # new_text_matrics = vectorizer.transform([new_text]).toarray()
-        # prediction = model.predict(new_text_matrics)
-        st.write("Prediction Category : ", st.session_state.svmNonSUM)
+        st.write(f"Prediction Category : {st.session_state.svmNonSUM}")
         
       with svm_Summary:
-        # vectorizer = joblib.load("resources/vectorizer_summary.pkl")
-        # model = joblib.load("resources/modelSVM_WithSummary.pkl")
-        # new_text_matrics = vectorizer.transform([new_text]).toarray()
-        # prediction = model.predict(new_text_matrics)
-        st.write("Prediction Category : ", st.session_state.svmSUM)
+        st.write(f"Prediction Category : {st.session_state.svmSUM}")
      
 
 elif selected == "Graph Kalimat":
